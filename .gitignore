@@ -1,0 +1,5 @@
+#Excluding important Archives that have Passwords and connection strings
+appsettings.json
+
+#Docker container config
+docker-compose.yaml
