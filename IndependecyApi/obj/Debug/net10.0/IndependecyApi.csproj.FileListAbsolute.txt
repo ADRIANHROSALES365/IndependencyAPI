@@ -160,3 +160,5 @@ C:\Users\ad_ri\OneDrive\Escritorio\DotNet\IndependenciaAPI\IndependecyApi\bin\De
 C:\Users\ad_ri\OneDrive\Escritorio\DotNet\IndependenciaAPI\IndependecyApi\bin\Debug\net10.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\ad_ri\OneDrive\Escritorio\DotNet\IndependenciaAPI\IndependecyApi\bin\Debug\net10.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\ad_ri\OneDrive\Escritorio\DotNet\IndependenciaAPI\IndependecyApi\bin\Debug\net10.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\ad_ri\OneDrive\Escritorio\DotNet\IndependenciaAPI\IndependecyApi\bin\Debug\net10.0\appsettings_example.json
+C:\Users\ad_ri\OneDrive\Escritorio\DotNet\IndependenciaAPI\IndependecyApi\obj\Debug\net10.0\IndependecyApi.sourcelink.json

@@ -20,6 +20,28 @@ namespace IndependecyApi.Controllers
             _mapper=mapper;
         }
 
+    [HttpGet]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+
+    public IActionResult GetTypes()
+        {
+            var types= _typeRepository.GetTypes();
+
+            //Using automaper on each element of types
+
+            var typeDto= new List<TypeDto>();
+
+            foreach(var type in types)
+            {
+                typeDto.Add(_mapper.Map<TypeDto>(type));
+            }
+
+        return Ok(typeDto);
+
+        }
+
      //Endopoint created in order to get a Type from the types table
      [HttpGet("{id:int}",Name="GetCategory")]
      [ProducesResponseType(StatusCodes.Status200OK)]
@@ -105,6 +127,8 @@ namespace IndependecyApi.Controllers
             return NoContent();
 
         }
+
+
         [HttpDelete("{id:int}",Name="DeleteType")]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]

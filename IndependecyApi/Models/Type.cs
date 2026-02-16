@@ -9,7 +9,6 @@ public class Type
  [Required]
  public String Name { get; set; } = string.Empty;
  public DateTime Creation_Date { get; set; }
-
  public DateTime Update_Date { get; set; }
 
  

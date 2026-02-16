@@ -1,3 +1,4 @@
+using IndependecyApi.Models;
 using Microsoft.EntityFrameworkCore;
 
 public class ApplicationDbContext: DbContext
@@ -8,4 +9,6 @@ public class ApplicationDbContext: DbContext
     }
 
     public DbSet<Type> Types { get; set; }
+
+    public DbSet<Expense> Expenses{get; set;}
 }
