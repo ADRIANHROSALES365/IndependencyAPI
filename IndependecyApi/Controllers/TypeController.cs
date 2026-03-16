@@ -12,6 +12,7 @@ namespace IndependecyApi.Controllers
     public class TypeController : ControllerBase
     {
         private readonly ITypeRepository _typeRepository ;
+        
         private readonly IMapper _mapper;
 
         public TypeController(ITypeRepository typeRepository , IMapper mapper)

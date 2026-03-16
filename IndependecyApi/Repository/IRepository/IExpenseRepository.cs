@@ -6,9 +6,9 @@ namespace IndependecyApi.Repository.IRepository
     {   
         ICollection<Expense> GetExpenses();
 
-        Expense GetExpense(int id);
+        Expense? GetExpense(int id);
 
-        Expense GetExpense(string name);
+        Expense? GetExpense(string name);
 
         bool ExpenseExists(string name);
 

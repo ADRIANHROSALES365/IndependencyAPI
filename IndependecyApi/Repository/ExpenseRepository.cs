@@ -10,32 +10,81 @@ public class ExpenseRepository : IExpenseRepository
     }
     public bool CreateExpense(Expense expense)
     {
-        throw new NotImplementedException();
+        if(expense==null)
+        {
+            return false;
+        }
+        expense.Creation_Date=DateTime.Now;
+        _db.Expenses.Add(expense);
+        return save();
+       
     }
 
     public bool DeleteExpense(Expense expense)
     {
-        throw new NotImplementedException();
+          if(expense==null)
+        {
+            return false;
+        }
+
+        _db.Expenses.Remove(expense);
+        return save();
     }
 
     public bool ExpenseExists(string name)
     {
-         throw new NotImplementedException();
+        if (string.IsNullOrWhiteSpace(name))
+        {
+            return false;
+        }
+
+        if(!_db.Expenses.Any(p=> p.Name.ToLower().Trim() == name.ToLower().Trim()))
+        {
+            return false;
+        }
+
+        return true;
+            
+        
     }
 
-    public Expense GetExpense(int id)
+    public Expense? GetExpense(int id)
     {
-        throw new NotImplementedException();
+        if(id<=0)
+        {
+            return null;
+        }
+
+        if(!_db.Expenses.Any(p=> p.Expense_id==id))
+        {
+            return null;
+        }
+
+        Expense? exp= _db.Expenses.FirstOrDefault(p=> p.Expense_id==id);
+        return exp;
     }
 
-    public Expense GetExpense(string name)
+    public Expense? GetExpense(string name)
     {
-        throw new NotImplementedException();
+        if (string.IsNullOrWhiteSpace(name))
+        {
+            return null;
+        }
+
+        if(!_db.Expenses.Any(p=>p.Name.ToLower().Trim()==name.ToLower().Trim()))
+        {
+            return null;
+        }
+
+        Expense? exp=_db.Expenses.FirstOrDefault(p=>p.Name.ToLower().Trim()==name.ToLower().Trim());
+        return exp;
     }
 
     public ICollection<Expense> GetExpenses()
     {
-        throw new NotImplementedException();
+        ICollection<Expense> expenses= _db.Expenses.OrderBy(p => p.Name).ToList();
+
+        return expenses;
     }
 
     public bool save()
@@ -45,6 +94,12 @@ public class ExpenseRepository : IExpenseRepository
 
     public bool UpdateExpense(Expense expense)
     {
-        throw new NotImplementedException();
+        if(expense==null)
+        {
+            return false;
+        }
+
+        _db.Expenses.Update(expense);
+        return save();
     }
 }
