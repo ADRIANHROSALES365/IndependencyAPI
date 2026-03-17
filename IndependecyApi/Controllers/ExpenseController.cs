@@ -4,6 +4,7 @@ using IndependecyApi.Models.Dtos;
 using IndependecyApi.Repository.IRepository;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace IndependecyApi.Controllers
 {
@@ -65,6 +66,33 @@ namespace IndependecyApi.Controllers
             var expensesList=_mapper.Map<List<ExpenseDto>>(expenses);
 
             return Ok(expensesList);
+
+        }
+
+        [HttpGet("name:string",Name ="SearchById")]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+
+        public IActionResult GetExpenseByName(string name)
+        {
+            if(!_repository.ExpenseExists(name))
+            {
+                ModelState.AddModelError("CustomError","Expense doesn't exist in the database");
+                BadRequest(ModelState);
+            }
+
+            var expense=_repository.GetExpense(name);
+
+            if(expense==null)
+            {
+                ModelState.AddModelError("CustomError","There had been an error trying to get info from the database");
+                BadRequest(ModelState);
+            }
+
+            var expensedto=_mapper.Map<ExpenseDto>(expense);
+            return Ok(expensedto);
+            
 
         }
         
