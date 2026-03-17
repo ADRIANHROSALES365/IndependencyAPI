@@ -6,6 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddScoped<ITypeRepository,TypeRepository>();
+builder.Services.AddScoped<IExpenseRepository,ExpenseRepository>();
 builder.Services.AddAutoMapper(config => config.AddMaps(typeof(Program).Assembly));
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("ConexionSql")));
 builder.Services.AddControllers();
